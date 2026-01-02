@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dpksdk6nwlm3g"]
+[gd_scene load_steps=14 format=3 uid="uid://dpksdk6nwlm3g"]
 
 [ext_resource type="Script" path="res://Script/GameManager.gd" id="1_7md0x"]
 [ext_resource type="PackedScene" uid="uid://buevcl8lxwtee" path="res://Scenes/Player.tscn" id="1_51m6l"]
 [ext_resource type="Texture2D" uid="uid://bcbkl0i512gvm" path="res://Assets/sprites/world_tileset.png" id="2_7s6ja"]
 [ext_resource type="PackedScene" uid="uid://d23en8ltt2kvw" path="res://Scenes/platform.tscn" id="2_j55li"]
+[ext_resource type="PackedScene" uid="uid://b8hrh51hcej76" path="res://Scenes/enemy.tscn" id="3_t65ny"]
 [ext_resource type="PackedScene" uid="uid://b42jfmk2bv1kr" path="res://Scenes/kill_zone.tscn" id="3_wmxrj"]
 [ext_resource type="PackedScene" uid="uid://dxbhfifk8jabd" path="res://Scenes/coin.tscn" id="4_45sbk"]
 
@@ -467,6 +468,9 @@ z_index = 10
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
+[node name="enemy" parent="." instance=ExtResource("3_t65ny")]
+position = Vector2(-111, -72)
+
 [node name="platformes" type="Node" parent="."]
 
 [node name="platform" parent="platformes" instance=ExtResource("2_j55li")]
@@ -508,10 +512,27 @@ position = Vector2(1, -26)
 shape = SubResource("WorldBoundaryShape2D_1t48d")
 
 [node name="coins" type="Node2D" parent="."]
+position = Vector2(4, 0)
 
 [node name="Coin2" parent="coins" instance=ExtResource("4_45sbk")]
 z_index = 10
 position = Vector2(164, 24)
+
+[node name="Coin5" parent="coins" instance=ExtResource("4_45sbk")]
+z_index = 10
+position = Vector2(25, 27)
+
+[node name="Coin6" parent="coins" instance=ExtResource("4_45sbk")]
+z_index = 10
+position = Vector2(-349, -88)
+
+[node name="Coin7" parent="coins" instance=ExtResource("4_45sbk")]
+z_index = 10
+position = Vector2(-144, -217)
+
+[node name="Coin8" parent="coins" instance=ExtResource("4_45sbk")]
+z_index = 10
+position = Vector2(-264, -264)
 
 [node name="Coin4" parent="coins" instance=ExtResource("4_45sbk")]
 z_index = 10

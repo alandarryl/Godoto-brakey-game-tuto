@@ -1,6 +1,8 @@
 extends Node2D
 
-@onready var coins = $"../coins"
+
+@onready var coin = $"../coins/Coin5"
+
 
 
 
