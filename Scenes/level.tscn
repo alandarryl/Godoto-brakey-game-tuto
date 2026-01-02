@@ -1,10 +1,49 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpksdk6nwlm3g"]
+[gd_scene load_steps=13 format=3 uid="uid://dpksdk6nwlm3g"]
 
 [ext_resource type="Script" path="res://Script/GameManager.gd" id="1_7md0x"]
 [ext_resource type="PackedScene" uid="uid://buevcl8lxwtee" path="res://Scenes/Player.tscn" id="1_51m6l"]
 [ext_resource type="Texture2D" uid="uid://bcbkl0i512gvm" path="res://Assets/sprites/world_tileset.png" id="2_7s6ja"]
+[ext_resource type="PackedScene" uid="uid://d23en8ltt2kvw" path="res://Scenes/platform.tscn" id="2_j55li"]
 [ext_resource type="PackedScene" uid="uid://b42jfmk2bv1kr" path="res://Scenes/kill_zone.tscn" id="3_wmxrj"]
 [ext_resource type="PackedScene" uid="uid://dxbhfifk8jabd" path="res://Scenes/coin.tscn" id="4_45sbk"]
+
+[sub_resource type="Animation" id="Animation_fcfdc"]
+resource_name = "move"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-241, -132), Vector2(-43, -132)]
+}
+
+[sub_resource type="Animation" id="Animation_g5vnr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-241, -132)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wt2p4"]
+_data = {
+"RESET": SubResource("Animation_g5vnr"),
+"move": SubResource("Animation_fcfdc")
+}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5k4h"]
 texture = ExtResource("2_7s6ja")
@@ -427,6 +466,29 @@ z_index = 10
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
+
+[node name="platformes" type="Node" parent="."]
+
+[node name="platform" parent="platformes" instance=ExtResource("2_j55li")]
+position = Vector2(418, -131)
+
+[node name="platform2" parent="platformes" instance=ExtResource("2_j55li")]
+position = Vector2(308, -37)
+
+[node name="platform5" parent="platformes" instance=ExtResource("2_j55li")]
+position = Vector2(-39, 1)
+
+[node name="platform3" parent="platformes" instance=ExtResource("2_j55li")]
+position = Vector2(-297, -14)
+
+[node name="platform4" parent="platformes" instance=ExtResource("2_j55li")]
+position = Vector2(-241, -132)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platformes/platform4"]
+libraries = {
+"": SubResource("AnimationLibrary_wt2p4")
+}
+autoplay = "move"
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = 2
