@@ -54,13 +54,21 @@ script = ExtResource("2_3bcf7")
 [node name="KillZone" parent="." instance=ExtResource("2_85hlc")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
-position = Vector2(0.5, 5)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_bn7h7")
 
+[node name="RayCastdonwleft" type="RayCast2D" parent="."]
+position = Vector2(-13, 6)
+target_position = Vector2(0, 8)
+
+[node name="RayCastdonwright" type="RayCast2D" parent="."]
+position = Vector2(13, 6)
+target_position = Vector2(0, 8)
+
 [node name="RayCastRight" type="RayCast2D" parent="."]
-position = Vector2(1, 4)
-target_position = Vector2(12, 1)
+position = Vector2(2, 6)
+target_position = Vector2(13, 0)
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
-position = Vector2(1, 4)
-target_position = Vector2(-12, 0)
+position = Vector2(-1, 5)
+target_position = Vector2(-13, 0)
