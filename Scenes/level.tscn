@@ -8,6 +8,21 @@
 [ext_resource type="PackedScene" uid="uid://b42jfmk2bv1kr" path="res://Scenes/kill_zone.tscn" id="3_wmxrj"]
 [ext_resource type="PackedScene" uid="uid://dxbhfifk8jabd" path="res://Scenes/coin.tscn" id="4_45sbk"]
 
+[sub_resource type="Animation" id="Animation_g5vnr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-241, -132)]
+}
+
 [sub_resource type="Animation" id="Animation_fcfdc"]
 resource_name = "move"
 length = 3.0
@@ -23,21 +38,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-241, -132), Vector2(-43, -132)]
-}
-
-[sub_resource type="Animation" id="Animation_g5vnr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-241, -132)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wt2p4"]
@@ -452,13 +452,27 @@ distance = -12.0
 [node name="Level" type="Node2D"]
 
 [node name="GameManager" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("1_7md0x")
 
-[node name="score" type="Label" parent="."]
+[node name="score" type="Label" parent="GameManager"]
+z_index = 15
+offset_left = -68.0
+offset_top = -581.0
+offset_right = 14.0
+offset_bottom = -553.0
+text = "0 "
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="labels" type="Node" parent="."]
+
+[node name="text" type="Label" parent="labels"]
+z_index = 15
 offset_left = -116.0
-offset_top = -580.0
-offset_right = -17.0
-offset_bottom = -557.0
+offset_top = -607.0
+offset_right = 57.0
+offset_bottom = -579.0
 text = "congrats your score is "
 
 [node name="player" parent="." instance=ExtResource("1_51m6l")]
@@ -528,6 +542,18 @@ position = Vector2(4, 0)
 [node name="Coin2" parent="coins" instance=ExtResource("4_45sbk")]
 z_index = 10
 position = Vector2(164, 24)
+
+[node name="Coin15" parent="coins" instance=ExtResource("4_45sbk")]
+z_index = 10
+position = Vector2(426, -261)
+
+[node name="Coin16" parent="coins" instance=ExtResource("4_45sbk")]
+z_index = 10
+position = Vector2(32, -278)
+
+[node name="Coin17" parent="coins" instance=ExtResource("4_45sbk")]
+z_index = 10
+position = Vector2(166, -503)
 
 [node name="Coin5" parent="coins" instance=ExtResource("4_45sbk")]
 z_index = 10
