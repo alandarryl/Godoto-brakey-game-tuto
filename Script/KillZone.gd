@@ -1,11 +1,13 @@
 extends Area2D
 
 @onready var timer = $Timer
+@onready var dead_sfx = $dead_sfx
 
 
 
 func _on_body_entered(body):
 	timer.start()
+	dead_sfx.play()
 	print("You are dead")
 
 

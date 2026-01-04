@@ -4,6 +4,8 @@ extends CharacterBody2D
 
 var jump_nb = 2
 var max_jump = 2
+@onready var jump_sfx = $jump_sfx
+
 
 
 const SPEED = 150.0
@@ -25,6 +27,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("ui_accept"):
 			velocity.y = JUMP_VELOCITY
 			jump_nb -= 1
+			jump_sfx.play()
 			#print(jump_nb)
 
 
