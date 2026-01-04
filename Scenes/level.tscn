@@ -507,6 +507,9 @@ position = Vector2(308, -37)
 [node name="platform5" parent="platformes" instance=ExtResource("2_j55li")]
 position = Vector2(-39, 1)
 
+[node name="platform6" parent="platformes" instance=ExtResource("2_j55li")]
+position = Vector2(105, -486)
+
 [node name="platform3" parent="platformes" instance=ExtResource("2_j55li")]
 position = Vector2(-297, -14)
 
